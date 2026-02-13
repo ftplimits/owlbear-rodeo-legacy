@@ -48,7 +48,7 @@ function Home() {
         }}
         mb={2}
       >
-        <Text variant="display" as="h1" sx={{ textAlign: "center" }}>
+        <Text variant="display" as="h1" sx={{ textAlign: "center", fontWeight: "bold" }}>
           Hallowed Rodeo
         </Text>
         <Image src={owlington} m={2} />
