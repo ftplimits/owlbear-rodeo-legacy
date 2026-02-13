@@ -49,7 +49,7 @@ function Home() {
         mb={2}
       >
         <Text variant="display" as="h1" sx={{ textAlign: "center" }}>
-          Owlbear Rodeo
+          Hallowed Rodeo
         </Text>
         <Image src={owlington} m={2} />
         <Button
