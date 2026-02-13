@@ -32,7 +32,7 @@ const theme = {
       "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
     heading: "'Bree Serif', serif",
     monospace: "Menlo, monospace",
-    display: "'Pacifico', Helvetica, sans-serif",
+    display: "Georgia, 'Times New Roman', serif",
   },
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72],
   fontWeights: {
