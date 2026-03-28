@@ -19,7 +19,10 @@ services:
     headers:
       - path: /*
         name: X-Frame-Options
-        X-Frame-Options: ALLOW
+        value: ALLOWALL
+      - path: /*
+        name: Content-Security-Policy
+        value: "frame-ancestors https://discord.com https://*.discord.com https://*.discordsays.com 'self'"
       - path: /*
         name: X-Robots-Tag
         value: noindex
@@ -47,11 +50,8 @@ services:
     numInstances: 1
     healthCheckPath: /health
     envVars:
-      - key: ORIGIN_WHITELIST
-        fromService:
-          type: web
-          name: "Owlbear Rodeo Legacy"
-          envVarKey: RENDER_EXTERNAL_HOSTNAME
+      - key: ALLOW_ORIGIN
+        value: "^https://(owlbear-rodeo-legacy-k20a\\.onrender\\.com|discord\\.com|[a-z0-9-]+\\.discord\\.com|[a-z0-9-]+\\.discordsays\\.com|localhost(:[0-9]+)?)$"
       - key: PORT
         value: 9000
       - key: NODE_VERSION
