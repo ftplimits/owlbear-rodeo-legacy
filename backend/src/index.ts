@@ -43,7 +43,22 @@ const corsConfig: CorsOptions = {
 
 const iceServer = new IceServer();
 
-const globalMiddleware: Array<RequestHandler> = [helmet(), cors(corsConfig)];
+const globalMiddleware: Array<RequestHandler> = [
+  helmet({
+    frameguard: false, // Disable X-Frame-Options; we use CSP frame-ancestors instead
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        connectSrc: ["'self'", "wss:", "ws:"],
+        scriptSrc: ["'self'"],
+        styleSrc: ["'self'", "'unsafe-inline'"],
+        imgSrc: ["'self'", "data:", "blob:"],
+        frameAncestors: ["https://discord.com", "https://*.discord.com"],
+      },
+    },
+  }),
+  cors(corsConfig),
+];
 
 const controllers: Array<Controller> = [
   new HealthcheckController(),
