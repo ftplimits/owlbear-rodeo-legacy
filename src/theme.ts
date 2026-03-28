@@ -27,10 +27,10 @@ const theme = {
     },
   },
   fonts: {
-    body: "'Bree Serif', Georgia, serif",
+    body: "Georgia, serif",
     body2:
       "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
-    heading: "'Bree Serif', serif",
+    heading: "Georgia, serif",
     monospace: "Menlo, monospace",
     display: "Georgia, 'Times New Roman', serif",
   },
