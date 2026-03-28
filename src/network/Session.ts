@@ -63,21 +63,32 @@ class Session extends EventEmitter {
    */
   async connect() {
     try {
-      if (
-        !process.env.REACT_APP_BROKER_URL ||
-        process.env.REACT_APP_MAINTENANCE === "true"
-      ) {
+      if (process.env.REACT_APP_MAINTENANCE === "true") {
         this.emit("status", "offline");
         return;
       }
-      this.socket = io(process.env.REACT_APP_BROKER_URL!, {
+
+      // When running inside a Discord Activity, all external requests must go
+      // through Discord's proxy at /.proxy/backend (mapped in the Developer Portal
+      // to owlbear-rodeo-backend-s0vj.onrender.com).
+      const isDiscordActivity =
+        window.location.hostname.endsWith(".discordsays.com");
+
+      const brokerUrl = isDiscordActivity
+        ? "/.proxy/backend"
+        : process.env.REACT_APP_BROKER_URL;
+
+      if (!brokerUrl) {
+        this.emit("status", "offline");
+        return;
+      }
+
+      this.socket = io(brokerUrl, {
         withCredentials: true,
         parser: msgParser,
         transports: ["websocket"],
       });
-      const response = await fetch(
-        `${process.env.REACT_APP_BROKER_URL}/iceservers`
-      );
+      const response = await fetch(`${brokerUrl}/iceservers`);
       if (!response.ok) {
         throw Error("Unable to fetch ICE servers");
       }
