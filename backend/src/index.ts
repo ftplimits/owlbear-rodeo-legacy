@@ -53,7 +53,7 @@ const globalMiddleware: Array<RequestHandler> = [
         scriptSrc: ["'self'"],
         styleSrc: ["'self'", "'unsafe-inline'"],
         imgSrc: ["'self'", "data:", "blob:"],
-        frameAncestors: ["https://discord.com", "https://*.discord.com"],
+        frameAncestors: ["https://discord.com", "https://*.discord.com", "https://*.discordsays.com"],
       },
     },
   }),

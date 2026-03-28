@@ -14,7 +14,7 @@ const limiter = rateLimit({
 app.use((req, res, next) => {
   res.setHeader(
     'Content-Security-Policy',
-    "frame-ancestors https://discord.com https://*.discord.com 'self'"
+    "frame-ancestors https://discord.com https://*.discord.com https://*.discordsays.com 'self'"
   );
   // Explicitly remove X-Frame-Options if set by anything else
   res.removeHeader('X-Frame-Options');
