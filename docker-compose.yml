@@ -9,14 +9,16 @@ services:
       PORT: 9000
       ALLOW_ORIGIN: ".*"
   frontend:
-    build: 
+    build:
       context: ./
+      args:
+        REACT_APP_BROKER_URL: "http://localhost:9000"
+        REACT_APP_VERSION: "1.10.2"
+        REACT_APP_MAINTENANCE: "false"
     depends_on:
       - backend
     ports:
       - 3000:3000
     environment:
-      REACT_APP_BROKER_URL: "http://localhost:9000"
-      REACT_APP_VERSION: "1.10.2"
-      REACT_APP_MAINTENANCE: "false"
+      PORT: 3000
 
