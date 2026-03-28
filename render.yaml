@@ -19,7 +19,7 @@ services:
     headers:
       - path: /*
         name: X-Frame-Options
-        value: sameorigin
+        X-Frame-Options: ALLOW
       - path: /*
         name: X-Robots-Tag
         value: noindex
